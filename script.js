@@ -173,7 +173,7 @@ function displayDate() {
        // nothing
      } else {
        tmp_object = {}
-       if (matches[i][2].match(/main/)) {
+       if (matches[i][2] == 'main') {
           tmp_object.value = 2;
        } else {
           tmp_object.value = 1;
@@ -232,12 +232,12 @@ function redrawAll() {
             improvedLayout:false,
             hierarchical: {
             enabled: true,
-            nodeSpacing: 300,
+            nodeSpacing: 200,
             blockShifting: false,
             edgeMinimization: false,
-            sortMethod: "directed"
-                //direction: 'UD',        // UD, DU, LR, RL
-                //sortMethod: 'hubsize'   // hubsize, directed
+            sortMethod: "directed",
+                direction: 'UD',        // UD, DU, LR, RL
+                sortMethod: 'directed'   // hubsize, directed
             }
         },
         nodes: {
@@ -259,9 +259,9 @@ function redrawAll() {
                 max: 14,
                 label: {
                     min: 8,
-                    max: 12,
-                    drawThreshold: 12,
-                    maxVisible: 20
+                    max: 10,
+                    drawThreshold: 6,
+                    maxVisible: 10
                 }
             },
             font: {
@@ -297,7 +297,7 @@ function redrawAll() {
     //network.fit()
     //test.focusOnNode(1,{scale: 1, offset:{x: -(1000/3)}})
     // focus on the JavaScript node
-    network.focus(1);
+    network.focus(3);
     // zooms in
     var zoomLevel = Math.min((Math.max($(window).width(),400) / 1220) * 1.7/9,1.7/9);
     network.moveTo({scale: zoomLevel});
